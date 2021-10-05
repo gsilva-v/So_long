@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:04:06 by gabriel           #+#    #+#             */
-/*   Updated: 2021/09/24 10:42:18 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/09/30 17:35:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ char	*ft_readleftstr(int fd, char *left_str)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*left_str;
+	static char	*left_str[256];
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
 		return (NULL);
-	left_str = ft_readleftstr(fd, left_str);
-	if (!left_str)
+	left_str[fd] = ft_readleftstr(fd, left_str[fd]);
+	if (!left_str[fd])
 		return (NULL);
-	line = ft_line(left_str);
-	left_str = ft_newleft(left_str);
+	line = ft_line(left_str[fd]);
+	left_str[fd] = ft_newleft(left_str[fd]);
 	if (line[0] == '\0')
 	{
-		free(left_str);
+		free(left_str[fd]);
 		free(line);
 		return (NULL);
 	}

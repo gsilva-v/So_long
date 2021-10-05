@@ -6,18 +6,14 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:04:09 by gabriel           #+#    #+#             */
-/*   Updated: 2021/09/24 10:19:40 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/02 08:20:23 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include "../../so_long.h"
 
+# include "../../so_long.h"
 
 char	*ft_strjoingnl(char *s1, char *s2);
 char	*ft_strchrgnl(char *s, int c);

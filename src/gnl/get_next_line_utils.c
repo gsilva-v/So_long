@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:04:02 by gabriel           #+#    #+#             */
-/*   Updated: 2021/09/22 14:38:09 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/01 07:47:30 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strchrgnl(char *s, int c)
 
 char	*ft_strjoingnl(char *left_str, char *buffer)
 {
-	char			*new_str;
+	char			*new;
 	size_t			s;
 	size_t			n;
 	int				lenstr;
@@ -57,17 +57,17 @@ char	*ft_strjoingnl(char *left_str, char *buffer)
 		left_str = (char *)malloc(1 * sizeof(char));
 		left_str[0] = '\0';
 	}
-	new_str = (char *) malloc (sizeof(char) * (lenstr + ft_strlengnl(buffer)) + 1);
-	if (new_str == NULL)
+	new = (char *) malloc (sizeof(char) * (lenstr + ft_strlengnl(buffer)) + 1);
+	if (new == NULL)
 		return (NULL);
 	while (left_str[n] != '\0')
-		new_str[n++] = left_str[s++];
+		new[n++] = left_str[s++];
 	s = 0;
 	while (buffer[s])
-		new_str[n++] = buffer[s++];
-	new_str[n] = '\0';
+		new[n++] = buffer[s++];
+	new[n] = '\0';
 	free(left_str);
-	return (new_str);
+	return (new);
 }
 
 char	*ft_line(char *left_str)

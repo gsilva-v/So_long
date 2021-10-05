@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:15:27 by gabriel           #+#    #+#             */
-/*   Updated: 2021/09/29 08:15:17 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/02 11:49:18 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,53 +18,54 @@ void	verify(int isvalid, t_map *map)
 		map->validate = isvalid;
 }
 
-int check_c(char c, t_map *map, int line, int colum)
+int	check_c(char c, t_map *map, int line, int colum)
 {
-	if(c == 'P')
+	if (c == 'P')
 	{
-		map->player.x = colum - 1;
-		map->player.y = line;
-		map->player_backup.x = colum - 1;
-		map->player_backup.y = line;
+		map->player.x = colum ;
+		map->player.y = line - 1;
+		map->player_backup.x = colum;
+		map->player_backup.y = line - 1;
 		map->check.player += 1;
 	}
-    if(c == 'C')
+	if (c == 'C')
 		map->check.colect += 1;
-    if(c == 'E')
+	if (c == 'E')
 		map->check.exit += 1;
-    if(c == 'C' || c == 'E' || c == 'P' || c == 'V')
-		return (1);
-    return (0);
+	if (c == 'C' || c == 'E' || c == 'P' || c == 'V' || c == '1' || c == '0')
+		return (TRUE);
+	return (FALSE);
 }
 
 int	check_wall(char c)
 {
 	if (c == '1')
-		return (1);
-	return (0);
+		return (TRUE);
+	else
+		return (error("this map don't have all walls"));
 }
 
-int check(char c, t_map *map, int lin, int col)
+int	check(char c, t_map *map, int lin, int col)
 {
-	int isvalid = 1;
-	
-	// isvalid = check_c(c, map, lin, col);
-	// if (isvalid == 0)
-	// 	return (0);//alguma mensagem de erro que ainda nao criei
-	// if (lin == 1 || col == 0)
-	// 	isvalid = check_wall(c);
-	// if (map->last_usable_col == col)
-	// 	isvalid = check_wall(c);
-	return (isvalid);
+	int	isvalid;
+
+	isvalid = check_c(c, map, lin, col);
+	if (isvalid == 0 && c != '\n')
+		return (error("this map have invalid caracters"));
+	if ((lin == 1 || col == 0) && c != '\n')
+		return (check_wall(c));
+	if (map->last_usable_col == col && c != '\n')
+		return (check_wall(c));
+	return (TRUE);
 }
 
-int check_cpe(t_map *map)
+int	check_cpe(t_map *map)
 {
-// 	if (map->check.player < 1)
-// 		return(0);
-// 	if (map->check.exit < 1)
-// 		return(0);
-// 	if (map->check.colect < 1)
-// 		return(0);
-	return (1);
+	if (map->check.player != 1)
+		return (error("the map must have at least 1 player"));
+	if (map->check.exit < 1)
+		return (error("the map must have at least 1 exit"));
+	if (map->check.colect < 1)
+		return (error("the map must have at least 1 colectable"));
+	return (TRUE);
 }
