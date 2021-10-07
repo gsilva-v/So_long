@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:28:58 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/01 08:26:02 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/05 14:49:02 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**init_map(t_game *game, int argc, char **argv)
 
 	if (!check_arg(argc, argv[1]))
 		return (FALSE);
-	map = save_map(argv[1], &game->map, game);
+	map = save_map(argv[1], &game->map);
 	if (!map)
 		return (FALSE);
 	return (map);
@@ -56,11 +56,11 @@ int	init_game(t_game *game, int argc, char **argv)
 	game->map = map;
 	game->map.map = init_map(game, argc, argv);
 	if (game->map.map == NULL)
-		return (-1);
+		return (ERROR);
 	open_wind(game);
 	game->img = start_img(game->mlx_pointer);
 	game->side = S;
 	render_map(game);
 	game->init_game = 1;
-	return (1);
+	return (TRUE);
 }

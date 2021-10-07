@@ -6,32 +6,11 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:09:50 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/02 11:48:36 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/05 11:24:01 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	check_last_line(char *line, t_map *map)
-{
-	int	i;
-	int	check;
-
-	i = 0;
-	while (i < map->last_usable_col)
-	{
-		if (line[i] == '1')
-			i++;
-		else
-		{
-			map->validate = 0;
-			break ;
-		}
-	}
-	check = check_cpe(map);
-	if (check == 0)
-		map->validate = 0;
-}
 
 int	count_lines(int fd, int total_lines, int count_colums, t_map *map)
 {
@@ -93,6 +72,9 @@ char	**alocate_map(char *argmap, t_map *map)
 		return (null_error("invalid map! Not is a rectangular"));
 	map_str = malloc(sizeof(char *) * map->line + 1);
 	if (!map_str)
+	{
+		free(map_str);
 		return (null_error("alocation is fault!"));
+	}
 	return (map_str);
 }

@@ -6,13 +6,48 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:01:01 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/01 12:59:58 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/05 11:24:12 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**save_map(char *what_map, t_map *the_map, t_game *game)
+void	free_map(char **map_str, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i <= map->line)
+	{
+		free(map_str[i]);
+		free(map->backup_map[i]);
+		i++;
+	}
+	free(map_str);
+	free(map->backup_map);
+}
+
+void	make_backup_map(t_map *map, char **map_str)
+{
+	int	i;
+
+	i = 0;
+	map->backup_map = malloc(sizeof(char *) * map->line + 1);
+	if (!map->backup_map)
+	{
+		free(map->backup_map);
+		return ;
+	}
+	while (i < map->line)
+	{
+		map->backup_map[i] = ft_strdup(map_str[i]);
+		i++;
+	}	
+	map->backup_map[i] = NULL;
+	map->colect = map->check.colect;
+}
+
+char	**save_map(char *what_map, t_map *the_map)
 {
 	int		fd;
 	char	**map_str;
@@ -24,10 +59,7 @@ char	**save_map(char *what_map, t_map *the_map, t_game *game)
 		return (null_error("invalid file"));
 	map_str = alocate_map(what_map, the_map);
 	if (!map_str)
-	{
-		free(map_str);
 		return (null_error("alocation fail"));
-	}
 	while (i < the_map->line)
 		map_str[i++] = get_next_line(fd);
 	map_str[i] = NULL;

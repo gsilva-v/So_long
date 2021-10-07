@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:15:27 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/02 11:49:18 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/05 15:06:47 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_c(char c, t_map *map, int line, int colum)
 {
 	if (c == 'P')
 	{
-		map->player.x = colum ;
+		map->player.x = colum;
 		map->player.y = line - 1;
 		map->player_backup.x = colum;
 		map->player_backup.y = line - 1;
@@ -59,10 +59,12 @@ int	check(char c, t_map *map, int lin, int col)
 	return (TRUE);
 }
 
-int	check_cpe(t_map *map)
+int	check_pec(t_map *map)
 {
-	if (map->check.player != 1)
+	if (map->check.player < 1)
 		return (error("the map must have at least 1 player"));
+	if (map->check.player > 1)
+		return (error("the map must have only 1 player"));
 	if (map->check.exit < 1)
 		return (error("the map must have at least 1 exit"));
 	if (map->check.colect < 1)

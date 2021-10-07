@@ -2,6 +2,8 @@ NAME = so_long
 
 CC = clang
 
+CFLAGS = -Wall -Werror -Wextra
+
 RM = rm -rf
 
 PATH_SRC = ./src/
@@ -17,12 +19,11 @@ MLX = $(PATH_MLX)libmlx.a
 
 LFT = $(PATH_LFT)libft.a
 
-SRCS= $(PATH_MAP)size_map.c $(PATH_MAP)check_map.c $(PATH_MAP)check_ber.c\
-		$(PATH_MAP)savemap.c $(PATH_MAP)validates.c $(PATH_MAP)init_imgs.c	\
+SRCS= $(PATH_MAP)size_map.c $(PATH_MAP)check_map.c \
+		$(PATH_MAP)savemap.c $(PATH_MAP)check_more.c $(PATH_MAP)init_imgs.c	\
 		$(PATH_GNL)get_next_line.c $(PATH_GNL)get_next_line_utils.c\
-		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)ft_strjoin.c\
-		$(PATH_UTILS)ft_split.c\
-		$(PATH_GAME)init.c $(PATH_GAME)open_window.c $(PATH_GAME)render_map.c\
+		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)ft_itoa.c\
+		$(PATH_GAME)init.c $(PATH_GAME)window_function.c $(PATH_GAME)render_map.c\
 		$(PATH_GAME)moves.c $(PATH_GAME)reset_game.c\
 		$(PATH_ERROR)messages.c
 
@@ -34,11 +35,10 @@ MLXFLAGS = -I $(PATH_MLX) -L $(PATH_MLX) -lmlx -Ilmlx -lXext -lX11
 
 all: $(NAME)
 
-
 $(NAME): $(OBJS)
 	@echo "\033[1;35mCompiling Game\033[0m"
 	@make -C $(PATH_MLX)
-	@$(CC) -g $(MLXFLAGS) ./src/so_long.c $(OBJS) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLXFLAGS) ./src/so_long.c $(OBJS) $(MLX) -o $(NAME)
 	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
@@ -48,7 +48,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)utils
 	@mkdir -p $(PATH_OBJS)errors
 	@mkdir -p $(PATH_OBJS)game
-	@$(CC) -g -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
 	
 bonus: all
 
