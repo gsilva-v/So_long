@@ -16,6 +16,7 @@
 # define A 0x61
 # define D 0x64
 # define ESC 0xff1b
+# define Q 0x71
 # define RESET 0x72
 # define TRUE 1
 # define FALSE 0

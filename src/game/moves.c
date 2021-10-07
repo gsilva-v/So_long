@@ -74,7 +74,7 @@ int	whatdo(int keypress, t_game *game)
 
 	line = game->map.player.y;
 	col = game->map.player.x;
-	if (keypress == ESC)
+	if (keypress == ESC || keypress == Q)
 		kill_window(game);
 	if (keypress == W)
 		line--;
