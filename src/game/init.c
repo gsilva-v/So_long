@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:28:58 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/05 14:49:02 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/11 14:11:29 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	init_game(t_game *game, int argc, char **argv)
 
 	start_map(&map);
 	game->map = map;
-	game->time_e = 0;
-	game->time_c = 0;
 	game->map.map = init_map(game, argc, argv);
 	if (game->map.map == NULL)
 		return (ERROR);
