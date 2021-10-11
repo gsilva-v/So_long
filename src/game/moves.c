@@ -36,7 +36,7 @@ int	check_move(int keypress, t_game *game, int line, int col)
 		return (ERROR);
 	if (game->map.map[line][col] == 'V')
 	{	
-		restart_game(game);
+		wasted_player(game);
 		return (ERROR);
 	}
 	if (keypress == W || keypress == S || keypress == D || keypress == A)

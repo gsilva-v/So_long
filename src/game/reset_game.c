@@ -12,6 +12,13 @@
 
 #include "so_long.h"
 
+void	wasted_player(t_game *game)
+{
+	game->end_game = -1;
+	game->steps = 0;
+
+}
+
 void	restart_game(t_game *game)
 {
 	use_backup_map(&game->map);
@@ -20,6 +27,9 @@ void	restart_game(t_game *game)
 	game->end_game = 0;
 	game->steps = 0;
 	game->side = D;
+	game->time_c = 0;
+	game->time_e = 0;
+
 }
 
 int	use_backup_map(t_map *map)

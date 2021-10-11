@@ -54,6 +54,8 @@ int	init_game(t_game *game, int argc, char **argv)
 
 	start_map(&map);
 	game->map = map;
+	game->time_e = 0;
+	game->time_c = 0;
 	game->map.map = init_map(game, argc, argv);
 	if (game->map.map == NULL)
 		return (ERROR);
