@@ -4,13 +4,16 @@
 # define TILES 50
 # define PATH_W "./imgs/wall.xpm"
 # define PATH_E "./imgs/empty.xpm"
-# define PATH_EX "./imgs/exit.xpm"
+# define PATH_EXO "./imgs/exit_open.xpm"
+# define PATH_EXC "./imgs/exit_close.xpm"
+# define PATH_PW "./imgs/player_wasted.xpm"
 # define PATH_PF "./imgs/player_front.xpm"
 # define PATH_PB "./imgs/player_back.xpm"
 # define PATH_PR "./imgs/player_right.xpm"
 # define PATH_PL "./imgs/player_left.xpm"
-# define PATH_C "./imgs/collect.xpm"
-# define PATH_V "./imgs/enemy.xpm"
+# define PATH_C "./imgs/collect_mid.xpm"
+# define PATH_V "./imgs/enemy4.xpm"
+# define ESPACE 0x20
 # define W 0x77
 # define S 0x73
 # define A 0x61
@@ -22,12 +25,11 @@
 # define FALSE 0
 # define ERROR -1
 # define BUFFER_SIZE 1
-
 # include <fcntl.h>//open, O_RDONLY
 # include <unistd.h>//read, close
 # include <stdlib.h>//malloc
 # include <stdio.h>//printf
-# include "./mlx/mlx.h"
+# include <mlx.h>
 # include "./src/gnl/get_next_line.h"
 
 typedef struct s_pos
@@ -73,13 +75,15 @@ typedef struct s_view
 	t_data	down;
 	t_data	left;
 	t_data	right;
+	t_data	wasted;
 }	t_view;
 
 typedef struct s_draw
 {
 	t_data	wall;
 	t_data	empty;
-	t_data	exit;
+	t_data	exito;
+	t_data	exitc;
 	t_view	player;
 	t_data	item;
 	t_data	enemy;
@@ -137,6 +141,7 @@ int		whatdo(int keypress, t_game *game);
 
 /*funções para reinicio*/
 void	restart_game(t_game *game);
+void	wasted_player(t_game *game);
 int		use_backup_map(t_map *map);
 
 /*Funções de inicialização de mapa*/
@@ -153,5 +158,12 @@ void	init_exit(t_draw *img, void *mlx);
 void	init_enemy(t_draw *img, void *mlx);
 void	init_wall(t_draw *img, void *mlx);
 void	render_map(t_game *game);
+void	print_enemy(t_game *game, int x, int y);
+void	win_or_lose(t_game *game);
+void	print_steps(char *steps, t_game *game);
+void	print_colect(t_game *game, int x, int y);
+void	print_enemy(t_game *game, int x, int y);
+void	print_exit(t_game *game, int x, int y);
+void	print_player(t_game *game, t_pos pos);
 
 #endif

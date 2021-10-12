@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   savemap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:01:01 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/05 11:24:12 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/12 14:16:27 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	free_map(char **map_str, t_map *map)
 	}
 	free(map_str);
 	free(map->backup_map);
+	map_str = NULL;
+	map->backup_map = NULL;
 }
 
 void	make_backup_map(t_map *map, char **map_str)

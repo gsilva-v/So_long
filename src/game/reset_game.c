@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reset_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:52:43 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/05 16:22:00 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/11 14:40:50 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	wasted_player(t_game *game)
 {
 	game->end_game = -1;
 	game->steps = 0;
-
 }
 
 void	restart_game(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_function.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:31:16 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/05 14:51:15 by gabriel          ###   ########.fr       */
+/*   Updated: 2021/10/12 14:02:42 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,19 @@ void	open_wind(t_game *game)
 int	kill_window(t_game *game)
 {
 	free_map(game->map.map, &game->map);
+	mlx_destroy_image(game->mlx_pointer, game->img.wall.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.exito.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.exitc.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.player.up.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.player.down.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.player.wasted.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.player.right.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.player.left.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.item.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.enemy.img);
+	free(game->mlx_pointer);
 	exit (0);
+	return (0);
 }
 
 int	refresh(t_game *game)
