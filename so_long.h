@@ -104,7 +104,7 @@ typedef struct s_game
 
 /*Utils*/
 int		ft_strlen(const char *str);
-char	*ft_strdup(const char *s);
+char	*ft_strdup(const char *s, char *save_str);
 char	*ft_itoa(int n);
 
 /*função de erro*/

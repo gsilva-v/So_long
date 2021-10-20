@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:09:50 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/12 14:17:25 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:00:12 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**alocate_map(char *argmap, t_map *map)
 		return (null_error("invalid map!"));
 	if (map->line == map->colum)
 		return (null_error("invalid map! Not is a rectangular"));
-	map_str = malloc(sizeof(char *) * map->line + 1);
+	map_str = malloc(sizeof(char *) * (map->line + 1));
 	if (!map_str)
 	{
 		free(map_str);

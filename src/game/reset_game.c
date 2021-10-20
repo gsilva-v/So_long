@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:52:43 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/11 14:40:50 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:50:47 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	use_backup_map(t_map *map)
 	}
 	while (i < map->line)
 	{
-		map->map[i] = ft_strdup(map->backup_map[i]);
+		map->map[i] = ft_strdup(map->backup_map[i], map->map[i]);
 		i++;
 	}
 	map->map[i] = NULL;
