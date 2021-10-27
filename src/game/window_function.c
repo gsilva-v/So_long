@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:31:16 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/12 14:02:42 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/25 13:57:10 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	kill_window(t_game *game)
 
 int	refresh(t_game *game)
 {
-	if (game->reset < 10)
+	if (game->reset < 20)
 		game->reset += 0.0001;
 	else if (game->end_game < 1)
 	{

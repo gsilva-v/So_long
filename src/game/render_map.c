@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:42:05 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/11 14:42:37 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/10/25 13:56:12 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	win_or_lose(t_game *game)
 			"YOU WIN!! PRESS 'R' TO PLAY AGAIN OR 'ESC' TO EXIT!");
 	else if (game->end_game == -1)
 	{
+		game->side = S;
 		mlx_string_put(game->mlx_pointer, game->window, 175, 10, 0xF0F8FF,
 			"WASTED, PRESS 'R' TO TRY ANOTHER WAY!!");
 		mlx_put_image_to_window(game->mlx_pointer, game->window,
