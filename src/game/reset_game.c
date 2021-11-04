@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:52:43 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/12 18:50:47 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/04 16:57:38 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,21 @@ int	use_backup_map(t_map *map)
 	int	i;
 
 	i = 0;
-	while (i <= map->line)
+	while (i < map->line)
 		free(map->map[i++]);
 	free(map->map);
-	i = 0;
 	map->map = malloc (sizeof(char *) * map->line + 1);
 	if (!map->map)
 	{
 		free (map->map);
 		return (FALSE);
 	}
+	i = 0;
 	while (i < map->line)
 	{
 		map->map[i] = ft_strdup(map->backup_map[i], map->map[i]);
 		i++;
 	}
-	map->map[i] = NULL;
 	map->check.colect = map->colect;
 	return (TRUE);
 }

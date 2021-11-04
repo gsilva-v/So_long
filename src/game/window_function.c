@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:31:16 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/25 13:57:10 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:32:59 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	open_wind(t_game *game)
 
 int	kill_window(t_game *game)
 {
+	mlx_clear_window(game->mlx_pointer, game->window);
+	mlx_loop_end(game->mlx_pointer);
 	free_map(game->map.map, &game->map);
 	mlx_destroy_image(game->mlx_pointer, game->img.wall.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.empty.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.exito.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.exitc.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.player.up.img);
@@ -30,11 +33,12 @@ int	kill_window(t_game *game)
 	mlx_destroy_image(game->mlx_pointer, game->img.player.wasted.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.player.right.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.player.left.img);
-	mlx_destroy_image(game->mlx_pointer, game->img.item.img);
 	mlx_destroy_image(game->mlx_pointer, game->img.enemy.img);
+	mlx_destroy_image(game->mlx_pointer, game->img.item.img);
+	mlx_destroy_window(game->mlx_pointer, game->window);
+	mlx_destroy_display(game->mlx_pointer);
 	free(game->mlx_pointer);
 	exit (0);
-	return (0);
 }
 
 int	refresh(t_game *game)

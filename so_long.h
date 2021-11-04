@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:39:32 by gsilva-v          #+#    #+#             */
-/*   Updated: 2021/11/04 13:39:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:09:49 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define PATH_PB "./imgs/player_back.xpm"
 # define PATH_PR "./imgs/player_right.xpm"
 # define PATH_PL "./imgs/player_left.xpm"
-# define PATH_C "./imgs/collect_mid.xpm"
-# define PATH_V "./imgs/enemy4.xpm"
+# define PATH_C "./imgs/collect.xpm"
+# define PATH_V "./imgs/enemy.xpm"
 # define ESPACE 0x20
 # define W 0x77
 # define S 0x73
@@ -37,10 +37,10 @@
 # define FALSE 0
 # define ERROR -1
 # define BUFFER_SIZE 1
-# include <fcntl.h>//open, O_RDONLY
-# include <unistd.h>//read, close
-# include <stdlib.h>//malloc
-# include <stdio.h>//printf
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include <mlx.h>
 # include "./src/gnl/get_next_line.h"
 
@@ -75,10 +75,6 @@ typedef struct s_data
 {
 	void	*img;
 	t_pos	size;
-	char	*pixels;
-	int		bytes_per_pixel;//informa o numero de bits necessarios pra representar uma cor
-	int		line_size;//informa quantos pixels tem na linha da imagem
-	int		endian;//define como as cores sao armazenadas.
 }	t_data;
 
 typedef struct s_view
