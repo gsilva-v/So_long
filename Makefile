@@ -31,14 +31,13 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 INCLUDE = -I ./
 
-MLXFLAGS = -I $(PATH_MLX) -L $(PATH_MLX) -lmlx -Ilmlx -lXext -lX11
+MLXFLAGS = -L $(PATH_MLX) -lmlx -Ilmlx -lXext -lX11
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "\033[1;35mCompiling Game\033[0m"
-	@make -C $(PATH_MLX)
-	@$(CC) $(CFLAGS) $(MLXFLAGS) ./src/so_long.c $(OBJS) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) ./src/so_long.c $(OBJS) $(MLXFLAGS) -o $(NAME)
 	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
@@ -58,7 +57,6 @@ clean:
 	@echo "\033[1;32mDone!\033[0m"
 	
 fclean: clean
-	@make clean -C $(PATH_MLX)	
 	@$(RM) so_long
 	@echo  "\033[1;33mCleaning all\033[0m"
 

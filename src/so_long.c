@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:44:11 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/11 14:38:11 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/11/04 13:23:34 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int argc, char **argv)
 	mlx_hook(game.window, 2, 1L << 0, whatdo, (void *)&game);
 	mlx_loop_hook(game.mlx_pointer, refresh, &game);
 	mlx_loop(game.mlx_pointer);
+	mlx_destroy_display(game.mlx_pointer);
 	return (0);
 }
