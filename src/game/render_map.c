@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 07:42:05 by gabriel           #+#    #+#             */
-/*   Updated: 2021/10/25 13:56:12 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2021/12/14 10:05:39 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	win_or_lose(t_game *game)
 		mlx_put_image_to_window(game->mlx_pointer, game->window,
 			game->img.player.wasted.img, game->map.player.x * TILES,
 			game->map.player.y * TILES);
-	}	
+	}
 }
 
 static void	what_print(t_game *game, int line, int col)

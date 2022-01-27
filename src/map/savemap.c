@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:01:01 by gabriel           #+#    #+#             */
-/*   Updated: 2021/11/04 17:02:11 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/10 14:08:53 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	make_backup_map(t_map *map, char **map_str)
 	{
 		map->backup_map[i] = ft_strdup(map_str[i], map->backup_map[i]);
 		i++;
-	}	
+	}
 	map->backup_map[i] = NULL;
 	map->colect = map->check.colect;
 }
